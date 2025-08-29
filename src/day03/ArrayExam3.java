@@ -1,23 +1,29 @@
 package day03;
 
-public class ArrayExam2 {
+class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+// 얕은복사
+
+public class ArrayExam3 {
     public static void main(String[] args) {
+        // 원본 배열
+        Person[] p1 = { new Person("철수"), new Person("영희") };
 
-        //깊은 복사처럼 보임
-        int[] arr1 = {1, 2, 3};
-        int[] arr2 = arr1.clone();
-        arr2[0] = 99;
+        // clone()으로 복사
+        Person[] p2 = p1.clone();
 
-        System.out.println(arr1[0]); // 1
-        System.out.println(arr2[0]); // 99
+        // p2[0]의 name 변경
+        p2[0].name = "홍길동";
 
-        //얕은 복사처럼 보임
-        String[] arr3 = {"A", "B", "C"};
-        String[] arr4 = arr3.clone();
-        arr4[0] = "Z";
-
-        System.out.println(arr3[0]); // A (String은 불변객체라 안전)
-        System.out.println(arr4[0]); // A (String은 불변객체라 안전)
+        // 결과 출력
+        System.out.println("p1[0].name: " + p1[0].name);
+        System.out.println("p2[0].name: " + p2[0].name);
     }
 
 }
